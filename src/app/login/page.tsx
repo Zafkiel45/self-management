@@ -49,7 +49,7 @@ export default function Login() {
         </div>
       </div>
       <div className="flex gap-2 justify-end w-[30%]">
-        <Link href={'#'}>
+        <Link href={'/'}>
           <Button
             activeColor="active:bg-orange-300"
             color="bg-orange-500"
