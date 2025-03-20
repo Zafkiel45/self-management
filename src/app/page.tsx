@@ -1,9 +1,26 @@
+'use client'
 import Image from "next/image";
 import { Button } from "@/components/button";
 import illustration from "../../public/account.svg";
 import Link from "next/link";
 
 export default function Home() {
+
+  async function testBackend() { 
+    try {
+      console.log('start fetch');
+      await fetch('http://localhost:3001/test', {
+        method: 'GET', 
+        mode: 'cors'
+      }).then((status) => {
+        console.log('request done successfully!', status.status);
+      });
+      console.log('end fetch');
+    } catch(err) {
+      console.error(err);
+    };
+  };
+
   return (
     <>
       <section className="w-full h-screen gap-10 flex items-center justify-center flex-col">
@@ -43,6 +60,15 @@ export default function Home() {
                 hoverColor="hover:bg-blue-400"
               />
             </Link>
+          </div>
+          <div>
+            <Button
+                onClick={testBackend}
+                content="Test Backend"
+                color="bg-blue-500"
+                activeColor="active:bg-blue-300"
+                hoverColor="hover:bg-blue-400"
+              />
           </div>
         </div>
       </section>
