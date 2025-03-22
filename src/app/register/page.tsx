@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Image from "next/image";
 // svgs
 import { User } from "../../../public/svg_components/user";
@@ -13,30 +13,31 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function Login() {
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
 
-  const [user, setUser] = useState('');
-  const [password, setPassword] = useState('');
-
-  function registerUser() {
+  async function registerUser() {
     try {
-      fetch('http://localhost:3001/register', {
-        method: 'POST',
-        mode: 'cors',
-        body: JSON.stringify({user: user, password: password}),
+      const response = await fetch("http://localhost:3001/register", {
+        method: "POST",
+        mode: "cors",
+        body: JSON.stringify({ user, password }),
+        credentials: 'include',
         headers: {
-          "Content-type": 'application/json'
-        }
-      }).then((res) => {
-        if(res.status !== 200) {
-          console.error('server returned an error');
-        } else {
-          console.log('user registred successfully!');
-        };
-      })
-    } catch(err) {
-      console.error(err); 
-    };
-  };
+          "Content-type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Erro do servidor: ${response.status}`);
+      }
+
+      const data = await response.text();
+      console.log("Usuário registrado com sucesso!", data);
+    } catch (err) {
+      console.error("Erro ao registrar usuário:", err);
+    }
+  }
 
   return (
     <div className="flex flex-col text-white items-center justify-center min-h-screen h-fit w-full gap-6">
@@ -50,8 +51,7 @@ export default function Login() {
       </div>
       <div className="text-white text-lg">
         <p className="text-center">
-          Crie sua conta preenchendo todos os campos abaixo.{" "}
-          <br />
+          Crie sua conta preenchendo todos os campos abaixo. <br />
           Lembre-se: O seu nome de usuário e senha diferencia entre
           <strong> minúscula e maiúscula</strong>.
         </p>
@@ -79,7 +79,7 @@ export default function Login() {
         </div>
       </div>
       <div className="flex gap-2 justify-end w-[30%]">
-        <Link href={'/'}>
+        <Link href={"/"}>
           <Button
             activeColor="active:bg-orange-300"
             color="bg-orange-500"
@@ -87,15 +87,13 @@ export default function Login() {
             hoverColor="hover:bg-orange-400"
           />
         </Link>
-        <Link href={'#'}>
-          <Button
+        <Button
           onClick={registerUser}
-            activeColor="active:bg-green-300"
-            color="bg-green-500"
-            hoverColor="hover:bg-green-400"
-            content="Criar usuário"
-          />
-        </Link>
+          activeColor="active:bg-green-300"
+          color="bg-green-500"
+          hoverColor="hover:bg-green-400"
+          content="Criar usuário"
+        />
       </div>
     </div>
   );
