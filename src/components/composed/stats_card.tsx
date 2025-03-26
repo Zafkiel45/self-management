@@ -2,7 +2,7 @@
 
 import { List } from "../list";
 import { Title } from "../title";
-import { BarChart } from "../chart";
+import { BarChart } from "../bar_chart";
 
 interface argsSignature {
   data: { name: string; value: number }[];
@@ -24,11 +24,11 @@ export const dataColors = [
 ];
 
 export const StatsCard = ({ data }: argsSignature) => {
-  const responsiveClasses = "gap-3 w-full max-h-96 p-7";
+  const responsiveClasses = "gap-5 w-full max-h-96 p-7";
 
   return (
     <div
-      className={`flex flex-col border border-[#5A5A5A] rounded-lg shadow-sm justify-start ${responsiveClasses}`}
+      className={`flex flex-col bg-[#171717] border border-[#5A5A5A] rounded-lg shadow-sm justify-start ${responsiveClasses}`}
     >
       <Title content="Dias Ativos" />
       <BarChart data={data}/>
