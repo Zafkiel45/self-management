@@ -28,7 +28,7 @@ export const StatsCard = ({ data }: argsSignature) => {
 
   return (
     <div
-      className={`flex flex-col bg-[#171717] border border-[#5A5A5A] rounded-lg shadow-sm justify-start ${responsiveClasses}`}
+      className={`flex flex-col bg-[#181818] border border-[#5A5A5A] rounded-lg shadow-sm justify-start ${responsiveClasses}`}
     >
       <Title content="Dias Ativos" />
       <BarChart data={data}/>
