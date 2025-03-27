@@ -17,7 +17,7 @@ export default function Dashboard() {
     { name: "Dezembro", value: 10 },
   ];
   return (
-    <MainContent>
+    <MainContent configs="flex-col">
       <StatsCard data={data} title="Dias em que você estudou" />
       <StatsCard data={data} title="Vezes em que você praticou hobbies" />
       <StatsCard data={data} title="Vezes em que você superou um vício" />

@@ -1,6 +1,8 @@
 import { NavItem } from "@/components/nav_item";
 import { Navbar } from "@/components/navbar";
 import { Home } from "../../../public/svg_components/home";
+import { Person } from "../../../public/svg_components/person";
+import Link from "next/link";
 
 export default function DashboardLayout({
   children,
@@ -10,7 +12,12 @@ export default function DashboardLayout({
   return (
     <div className="bg-[#070709] flex ">
       <Navbar>
-        <NavItem content="Dashboard" icon={<Home />} />
+        <Link href={'/dashboard'} className="w-full">
+            <NavItem content="Dashboard" icon={<Home />} /> 
+        </Link>
+        <Link href={'/dashboard/habits'} className="w-full">
+            <NavItem content="Habits" icon={<Person />} />
+        </Link>
       </Navbar>
       {children}
     </div>
