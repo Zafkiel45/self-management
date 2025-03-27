@@ -6,6 +6,7 @@ import { BarChart } from "../bar_chart";
 
 interface argsSignature {
   data: { name: string; value: number }[];
+  title: string; 
 };
 
 export const dataColors = [
@@ -23,14 +24,14 @@ export const dataColors = [
   "bg-green-700",
 ];
 
-export const StatsCard = ({ data }: argsSignature) => {
+export const StatsCard = ({ data, title}: argsSignature) => {
   const responsiveClasses = "gap-5 w-full max-h-96 p-7";
 
   return (
     <div
       className={`flex flex-col bg-[#181818] border border-[#5A5A5A] rounded-lg shadow-sm justify-start ${responsiveClasses}`}
     >
-      <Title content="Dias Ativos" />
+      <Title content={title} />
       <BarChart data={data}/>
       <div className="w-full">
         <List isColumn={false}>

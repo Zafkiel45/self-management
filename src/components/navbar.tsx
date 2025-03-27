@@ -10,7 +10,7 @@ export const Navbar = ({
     const responsiveClasses = 'lg:gap-5 lg:p-5 lg:h-screen lg:w-[18vw]';
 
     return (
-        <nav {...props} className={`bg-neutral-950 text-white border-r border-r-[#5A5A5A] flex flex-col items-center ${responsiveClasses}`}>
+        <nav {...props} className={`bg-[#181818] text-white border-r border-r-[#5A5A5A] flex flex-col items-center ${responsiveClasses}`}>
             {children}
         </nav>
     )

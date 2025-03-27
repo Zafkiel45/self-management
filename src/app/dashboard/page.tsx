@@ -18,7 +18,9 @@ export default function Dashboard() {
   ];
   return (
     <MainContent>
-      <StatsCard data={data} />
+      <StatsCard data={data} title="Dias em que você estudou" />
+      <StatsCard data={data} title="Vezes em que você praticou hobbies" />
+      <StatsCard data={data} title="Vezes em que você superou um vício" />
     </MainContent>
   );
 }
